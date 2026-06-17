@@ -104,3 +104,25 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+# =========================================
+# 프로젝트 맞춤 추가 설정
+# =========================================
+
+# 1. OS 맞춤 설정 (맥북과 윈도우 환경 충돌 방지)
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# 2. Photon PUN2 불필요한 데모 폴더 (용량 및 빌드 시간 낭비 방지)
+/[Aa]ssets/Photon/PhotonUnityNetworking/Demos/
+/[Aa]ssets/Photon/PhotonChat/Demos/
+
+# 3. 2D 아트 워크플로우 찌꺼기 파일 (임시 저장 파일 무시)
+*.tmp
+*~
+*.swp
