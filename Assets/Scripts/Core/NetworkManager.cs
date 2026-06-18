@@ -41,5 +41,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("4단계: 방 입장 완료! 이제 멀티플레이를 시작할 수 있습니다.");
         Debug.Log("현재 방 이름: " + PhotonNetwork.CurrentRoom.Name);
         Debug.Log("현재 방 인원수: " + PhotonNetwork.CurrentRoom.PlayerCount + "명");
+        // Resources 폴더에 있는 "PlayerDummy"를 x:0, y:0 위치에 소환
+        PhotonNetwork.Instantiate("PlayerDummy", Vector3.zero, Quaternion.identity);
     }
 }
