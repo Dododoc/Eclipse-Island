@@ -42,6 +42,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("현재 방 이름: " + PhotonNetwork.CurrentRoom.Name);
         Debug.Log("현재 방 인원수: " + PhotonNetwork.CurrentRoom.PlayerCount + "명");
         // Resources 폴더에 있는 "PlayerDummy"를 x:0, y:0 위치에 소환
-        PhotonNetwork.Instantiate("PlayerDummy", Vector3.zero, Quaternion.identity);
+        PhotonNetwork.Instantiate("Player_Crafter", Vector3.zero, Quaternion.identity);
     }
 }
