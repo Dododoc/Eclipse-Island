@@ -7,11 +7,23 @@ public class PlayerController : MonoBehaviourPun
     
     private Animator animator;
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D rb; 
 
     void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>(); 
+
+        // [복구 완료] 내 캐릭터일 경우에만 메인 카메라가 나를 쫓아오도록 설정!
+        if (photonView.IsMine)
+        {
+            CameraController cam = Camera.main.GetComponent<CameraController>();
+            if (cam != null)
+            {
+                cam.SetTarget(this.transform);
+            }
+        }
     }
 
     void Update()
@@ -26,7 +38,8 @@ public class PlayerController : MonoBehaviourPun
 
             Vector3 moveInput = new Vector3(h, v, 0).normalized;
 
-            transform.position += moveInput * moveSpeed * Time.deltaTime;
+            // [물리 이동] 유니티 6 최신 문법 적용 완벽함!
+            rb.linearVelocity = moveInput * moveSpeed;
 
             // 움직임이 있을 때만 방향 파라미터 갱신
             if (moveInput.magnitude > 0)
@@ -45,12 +58,10 @@ public class PlayerController : MonoBehaviourPun
         
         if (syncedMoveX < -0.01f) 
         {
-            // [변경됨] MoveX가 음수(왼쪽)면 스프라이트 반전!
             spriteRenderer.flipX = true;
         }
         else if (syncedMoveX > 0.01f) 
         {
-            // [변경됨] MoveX가 양수(오른쪽)면 원본 그대로(오른쪽)
             spriteRenderer.flipX = false;
         }
     }
