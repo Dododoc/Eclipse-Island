@@ -43,6 +43,8 @@ MonoBehaviour:
   - SyncTimer
   - RepairCore
   - SyncGameState
+  - SyncHeldItemGraphic
+  - RPC_DropItem
   DisableAutoOpenWizard: 1
   ShowSettings: 0
   DevRegionSetOnce: 0
